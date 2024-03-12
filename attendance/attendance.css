@@ -1,0 +1,98 @@
+body {
+    background-color: #161616;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.studentData {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.studentData input,
+#attendanceCalculator input,
+#attendanceCalculator button {
+    margin-top: 10px;
+    padding: 8px;
+    width: 200px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.btn-neon {
+    color: #333;
+    background-color: #00ffcc;
+    border: 2px solid #00ffcc;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-neon:hover {
+    background-color: #00e6b8;
+    border-color: #00e6b8;
+}
+
+#attendanceCalculator {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#attendanceCalculator label,
+#attendanceCalculator input,
+#attendanceCalculator button {
+    display: block;
+    margin: 10px auto;
+}
+
+.btn-neon-calc {
+    color: #333;
+    background-color: #ff9900;
+    border: 2px solid #ff9900;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-neon-calc:hover {
+    background-color: #e68a00;
+    border-color: #e68a00;
+}
+
+#attendanceResult {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid #fff;
+}
+
+th,
+td {
+    padding: 10px;
+}

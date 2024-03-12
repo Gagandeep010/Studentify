@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notes Manager</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  
+  <h1>Notes manager</h1>
+  <label for="filename">Filename:</label>
+  <input type="text" id="filename"><br><br>
+  <label for="filedata">File Data:</label><br>
+  <textarea id="filedata" rows="10" cols="50"></textarea><br><br>
+  <button onclick="createFile()">Create File</button>
+  <button onclick="readFile()">Read File</button>
+  <button onclick="updateFile()">Update File</button>
+  <button onclick="deleteFile()">Upload File</button>
+  <button onclick="uploadFile()">Delete File</button>
+
+  <div id="output"></div>
+  <script>
+    function createFile() {
+      const filename = document.getElementById('filename').value;
+      const filedata = document.getElementById('filedata').value;
+      const file = new File([filedata], filename);
+      const reader = new FileReader();
+      reader.onload = function() {
+        const dataUrl = reader.result;
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = filename;
+        link.click();
+        document.getElementById('output').innerHTML = `File ${filename} created successfully.`;
+      };
+      reader.readAsDataURL(file);
+    }
+    function readFile() {
+      const filename = document.getElementById('filename').value;
+      const fileInput = document.createElement('input');
+      fileInput.type = 'file';
+      fileInput.addEventListener('change', function() {
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onload = function() {
+          const filedata = reader.result;
+          document.getElementById('filedata').value = filedata;
+          document.getElementById('output').innerHTML = `File ${filename} read successfully.`;
+        };
+        reader.readAsText(file);
+      });
+      fileInput.click();
+    }
+    function updateFile() {
+      const filename = document.getElementById('filename').value;
+      const filedata = document.getElementById('filedata').value;
+      const file = new File([filedata], filename);
+      const reader = new FileReader();
+      reader.onload = function() {
+        const dataUrl = reader.result;
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = filename;
+        link.click();
+        document.getElementById('output').innerHTML = `File ${filename} updated successfully.`;
+      };
+      reader.readAsDataURL(file);
+    }
+    function deleteFile() {
+      const filename = document.getElementById('filename').value;
+      if (confirm(`Are you sure you want to delete ${filename}?`)) {
+        window.URL.revokeObjectURL(filename);
+        document.getElementById('output').innerHTML = `File ${filename} deleted successfully.`;
+      }
+    }
+  </script>
+</body>
+</html>

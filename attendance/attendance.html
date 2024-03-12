@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="attendance.css">
+    <title>Student Management</title>
+    </link>
+
+    <body>
+        <div class="studentData">
+            <form action="" id="form1">
+                <input type="text" placeholder="Name" id="name" required>
+                <input type="text" placeholder="Department" id="Department" required>
+                <input type="text" placeholder="Section" id="Section" required>
+                <input type="text" placeholder="Roll No" id="rollNo" required>
+                <input type="submit" class="btn btn-warning">
+            </form>
+        </div>
+
+        <div id="attendanceCalculator">
+            <h2>Attendance Calculator</h2>
+            <label for="totalClasses">Total Classes:</label>
+            <input type="number" id="totalClasses" min="1" required>
+            <label for="attendedClasses">Attended Classes:</label>
+            <input type="number" id="attendedClasses" min="0" required>
+            <button onclick="calculateAttendance()" class="btn btn-primary">Calculate</button>
+            <p id="attendanceResult"></p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Section</th>
+                    <th>Roll No.</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="./student.js"></script>
+        <script>
+            // Function to calculate attendance
+            function calculateAttendance() {
+                var totalClasses = parseInt(document.getElementById("totalClasses").value);
+                var attendedClasses = parseInt(document.getElementById("attendedClasses").value);
+                var attendancePercentage = (attendedClasses / totalClasses) * 100;
+
+                document.getElementById("attendanceResult").innerHTML = "Attendance: " + attendancePercentage.toFixed(2) + "%";
+                checkAttendance(attendancePercentage);
+            }
+
+            // Function to check attendance and send email if less than 75%
+            function checkAttendance(attendance) {
+                if (attendance < 75) {
+                    // Here you can add code to send an email to parents
+                    alert("Attendance less than 75%, sending email to parents...");
+                }
+            }
+        </script>
+        <script src="sms.js"></script>
+    </body>
+</html>

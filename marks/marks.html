@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mt-5">Marks Calculator</h1>
+    <form id="marksForm" class="mt-4">
+        <div class="mb-3">
+            <label for="subject1" class="form-label">Subject 1 Marks:</label>
+            <input type="number" class="form-control" id="subject1" required>
+        </div>
+        <div class="mb-3">
+            <label for="subject2" class="form-label">Subject 2 Marks:</label>
+            <input type="number" class="form-control" id="subject2" required>
+        </div>
+        <div class="mb-3">
+            <label for="subject3" class="form-label">Subject 3 Marks:</label>
+            <input type="number" class="form-control" id="subject3" required>
+        </div>
+        <div class="mb-3">
+            <label for="subject4" class="form-label">Subject 4 Marks:</label>
+            <input type="number" class="form-control" id="subject4" required>
+        </div>
+        <div class="mb-3">
+            <label for="subject5" class="form-label">Subject 5 Marks:</label>
+            <input type="number" class="form-control" id="subject5" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+    </form>
+
+    <div id="result" class="mt-4 d-none">
+        <h2>Total Marks:</h2>
+        <p id="totalMarks"></p>
+        <h2>Percentage:</h2>
+        <p id="percentage"></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('marksForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var subject1 = parseInt(document.getElementById('subject1').value);
+        var subject2 = parseInt(document.getElementById('subject2').value);
+        var subject3 = parseInt(document.getElementById('subject3').value);
+        var subject4 = parseInt(document.getElementById('subject4').value);
+        var subject5 = parseInt(document.getElementById('subject5').value);
+
+        if (isNaN(subject1) || isNaN(subject2) || isNaN(subject3) || isNaN(subject4) || isNaN(subject5)) {
+            alert("Please enter valid marks for all subjects.");
+            return;
+        }
+
+        var totalMarks = subject1 + subject2 + subject3 + subject4 + subject5;
+        var percentage = (totalMarks / 500) * 100;
+
+        document.getElementById('totalMarks').innerText = "Total Marks: " + totalMarks;
+        document.getElementById('percentage').innerText = "Percentage: " + percentage.toFixed(2) + "%";
+        document.getElementById('result').classList.remove('d-none');
+    });
+</script>
+
+</body>
+</html>
